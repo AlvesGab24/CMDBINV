@@ -1,0 +1,15 @@
+{
+  "name": "cmdb-nodejs",
+  "version": "1.0.0",
+  "description": "Sistema CMDB simples em Node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.1",
+    "ejs": "^3.1.9",
+    "sqlite3": "^5.1.4"
+  }
+}
