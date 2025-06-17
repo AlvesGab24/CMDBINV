@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// Rota principal - mostra a lista de ativos cadastrados
 app.get('/', (req, res) => {
   const sql = "SELECT * FROM assets";
   db.all(sql, [], (err, rows) => {
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
   });
 });
 
+// Rota para adicionar um novo ativo (recebe dados do formulário)
 app.post('/add', (req, res) => {
   const { name, purchase_date, model, owner } = req.body;
   const sql = "INSERT INTO assets (name, purchase_date, model, owner) VALUES (?, ?, ?, ?)";
@@ -29,6 +31,12 @@ app.post('/add', (req, res) => {
     res.redirect('/');
   });
 });
+
+// Inicializa o servidor na porta configurada
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
